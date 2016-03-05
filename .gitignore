@@ -7,6 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-/*.gem
-/.idea/**/*
+/.idea/*
 /.DS_Store
