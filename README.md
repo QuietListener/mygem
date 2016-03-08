@@ -212,6 +212,7 @@ WARNING:  See http://guides.rubygems.org/specification-reference/ for help
   Name: mygem 
   Version: 0.1.0 
   File: mygem-0.1.0.gem 
+```
  
 ### 8.在irb中测试gem包 
 ```shell
