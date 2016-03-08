@@ -1,6 +1,5 @@
-手动制作gem并且使用rspec进行单元测试 
- 
-1.使用bundle gem 创建脚手架 
+### 1.使用bundle gem 创建脚手架 
+```shell
 junjunlocal:projects Admin$ bundle gem mygem 
 Creating gem 'mygem'... 
 Code of conduct enabled in config 
@@ -18,8 +17,9 @@ MIT License enabled in config
       create  mygem/LICENSE.txt 
       create  mygem/.travis.yml 
 Initializing git repo in /User/junjun/projects/mygem 
- 
-2.在lib/mygem/目录中添加我们的业务逻辑类Caculator,并且修改lib/mygem.rb 
+ ```
+### 2.在lib/mygem/目录中添加我们的业务逻辑类Caculator,并且修改lib/mygem.rb 
+```shell
 junjunlocal:mygem Admin$ tree  
 . 
 ├── CODE_OF_CONDUCT.md 
@@ -38,8 +38,9 @@ junjunlocal:mygem Admin$ tree
 └── mygem.gemspec 
  
 3 directories, 11 files 
- 
-#caculator.rb 
+```
+caculator.rb 
+```ruby
 module Mygem 
  class Caculator 
     def self.add(n1,n2) 
@@ -47,7 +48,8 @@ module Mygem
     end 
  end 
 end 
- 
+```
+```ruby
 #lib/mygem.rb 
 require "mygem/version" 
 require "mygem/caculator.rb" 
@@ -55,10 +57,11 @@ require "mygem/caculator.rb"
 module Mygem 
   # Your code goes here... 
 end 
- 
+``` 
 ~         
  
-3.修改 mygem/mygem.gemspec,添加rspec用于测试，添加依赖库fileutils 
+### 3.修改 mygem/mygem.gemspec,添加rspec用于测试，添加依赖库fileutils 
+```ruby 
 # coding: utf-8 
 lib = File.expand_path('../lib', __FILE__) 
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib) 
@@ -98,8 +101,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.2" 
    
 end 
- 
-4.单元测试,添加spec/caculator_spec.rb测试文件 
+```  
+### 4.单元测试,添加spec/caculator_spec.rb测试文件 
+```shell
 junjunlocal:mygem Admin$ tree 
 . 
 ├── CODE_OF_CONDUCT.md 
@@ -120,14 +124,13 @@ junjunlocal:mygem Admin$ tree
     └── caculator_spec.rb 
  
 4 directories, 12 files 
- 
+``` 
  
 spec/caculator_spec.rb 内容: 
+```shell
 #encoding:utf-8 
 #测试代码 
- 
 require 'Mygem' 
- 
 describe Mygem::Caculator do 
       n1 = 10 
       n2 = 11 
@@ -144,8 +147,9 @@ describe Mygem::Caculator do
         expect(ret).to eql(n1+n2+1) 
       end 
 end 
- 
-5.测试我们的gem,运行bundle install 加载gem依赖的东西 
+``` 
+### 5.测试我们的gem,运行bundle install 加载gem依赖的东西 
+```shell
 junjunlocal:mygem Admin$ bundle install 
 Fetching gem metadata from https://ruby.taobao.org/.... 
 Fetching version metadata from https://ruby.taobao.org/.. 
@@ -163,13 +167,15 @@ Installing rspec-mocks 3.4.1
 Installing rspec 3.4.0 
 Bundle complete! 4 Gemfile dependencies, 11 gems now installed. 
 Use `bundle show [gemname]` to see where a bundled gem is installed. 
- 
+``` 
 可以看到 我们依赖的fileutils已经自动安装了,并且mygem也自动包括进来了 
+```shell
  Installing fileutils 0.7 
  Using mygem 0.1.0 from source at . 
+``` 
  
- 
-6.运行测试用例 一个通过一个挂掉符合我们的语气 
+### 6.运行测试用例 一个通过一个挂掉符合我们的语气 
+```shell
 junjunlocal:mygem Admin$ pwd 
 /User/junjun/projects/mygem 
 junjunlocal:mygem Admin$ bundle exec rspec   
@@ -192,9 +198,10 @@ Finished in 0.03537 seconds (files took 0.16785 seconds to load)
 Failed examples: 
  
 rspec ./spec/caculator_spec.rb:17 # Mygem::Caculator test add : 21 
+``` 
  
- 
-7.打gem包 
+### 7.打gem包 
+```
 junjunlocal:mygem Admin$ gem build mygem.gemspec  
 WARNING:  description and summary are identical 
 WARNING:  open-ended dependency on fileutils (>= 0) is not recommended 
@@ -218,17 +225,4 @@ junjunlocal:mygem Admin$ irb
  => true  
 1.9.3-p545 :003 > Mygem::Caculator.add(1,2) 
  => 3  
-1.9.3-p545 :004 >  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+1.9.3-p545 :004 > 
