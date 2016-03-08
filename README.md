@@ -213,7 +213,8 @@ WARNING:  See http://guides.rubygems.org/specification-reference/ for help
   Version: 0.1.0 
   File: mygem-0.1.0.gem 
  
-8.在irb中测试gem包 
+### 8.在irb中测试gem包 
+```shell
 junjunlocal:mygem Admin$ gem install mygem-0.1.0.gem  
 Successfully installed mygem-0.1.0 
 Parsing documentation for mygem-0.1.0 
@@ -226,3 +227,4 @@ junjunlocal:mygem Admin$ irb
 1.9.3-p545 :003 > Mygem::Caculator.add(1,2) 
  => 3  
 1.9.3-p545 :004 > 
+```
